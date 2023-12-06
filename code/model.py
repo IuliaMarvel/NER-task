@@ -38,7 +38,7 @@ class plNERModel(pl.LightningModule):
         outputs = outputs.view(-1, self.output_size)
         labels = labels.view(-1)
         loss = self.criterion(outputs, labels)
-        self.validation_history.append(loss)
+        self.validation_history.append(loss.item())
         self.log('val_loss', loss)
         return loss
 
